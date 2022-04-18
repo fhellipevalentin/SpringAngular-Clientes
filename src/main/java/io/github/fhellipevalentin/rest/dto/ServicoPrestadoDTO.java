@@ -11,3 +11,4 @@ public class ServicoPrestadoDTO {
 	private String data;
 	private Integer idCliente;
 }
+ 
