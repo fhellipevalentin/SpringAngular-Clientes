@@ -15,7 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import io.github.fhellipevalentin.rest.exceptions.ApiErrors;
 
 @RestControllerAdvice
-public class ApplicationControlerAdvice {
+public class ApplicationControllerAdvice {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -30,7 +30,7 @@ public class ApplicationControlerAdvice {
 	
 	@ExceptionHandler(ResponseStatusException.class)
 	public ResponseEntity<ApiErrors> handleResponseStatusException(ResponseStatusException ex) {
-		String mensagemErro = ex.getMessage();
+		String mensagemErro = ex.getReason();
 		HttpStatus codigoStatus = ex.getStatus();
 		ApiErrors apiErrors = new ApiErrors(mensagemErro);
 		return new ResponseEntity<ApiErrors>(apiErrors, codigoStatus);
